@@ -1,0 +1,50 @@
+
+
+.container {
+  display: flex;
+  margin-top: 160px;
+  gap: 1rem;
+  background-color: black;
+  margin-left: 34px;
+  margin-bottom: 30px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.flex {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.sliderControl {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 99;
+}
+
+.sliderControl.show {
+  opacity: 1;
+}
+
+.left {
+  left: 0px; 
+}
+
+.right {
+  right: 41vw; 
+}
+
+.none {
+  display: none;
+}
+
+.sliderControl svg {
+  width: 28px;
+  height: 28px;
+  fill: rgb(4, 0, 0);
+  background-color: antiquewhite;
+  border-radius: 50%;
+}

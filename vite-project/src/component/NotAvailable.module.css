@@ -1,0 +1,19 @@
+.msg{
+    font-size: 44px;
+    color:white;
+    text-align:center;
+   
+    padding-top: 100px;
+    padding-left: 300px;
+    background-color: black;
+
+}
+
+.container{
+    background-color: black;
+    position: absolute;
+    font-family: sans-serif;
+    overflow-x:hidden;
+    height: 100vh;
+    width: 100%;
+}

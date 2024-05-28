@@ -1,0 +1,94 @@
+.cartContainer {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    color: black;
+  }
+  
+  .heading {
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: black;
+    text-align: center;
+  }
+  
+  .itemsContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .movieItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 0;
+  }
+  
+  .movieDetails {
+    flex: 1;
+  }
+  
+  .movieName {
+    font-size: 18px;
+  }
+  
+  .moviePrice {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .controls {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantityBtn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .quantity {
+    font-size: 16px;
+    margin: 0 5px;
+    color: black;
+  }
+  
+  .deleteBtn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .totalBill {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: right;
+    color: black;
+  }
+
+  .checkoutBtn button{
+    background-color: #08dd2f;
+    color: #fbfafa;
+    border: none;
+    border-radius: 4px;
+    padding: 5px;
+    cursor: pointer;
+    font-family:  sans-serif;
+    font-weight: 900;
+    width:100%
+  }

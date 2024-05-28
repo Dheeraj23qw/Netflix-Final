@@ -1,0 +1,165 @@
+
+
+.background{
+  width: 100%;
+  height: 100vh;
+  background-image:url(images/header1.jpg);
+  font-size: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: none;
+}
+.container {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensure the navbar appears above other content */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+ 
+}
+
+.playButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem; /* Adjust size as needed */
+  color: white; /* Adjust color as needed */
+  cursor: pointer;
+}
+
+
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: black; 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+  transition: all 0.5s ease; 
+}
+
+
+
+.container1 {
+  display: flex;
+  align-items: center;
+ 
+}
+
+.brand img {
+  width: 150px;
+  height: 4 rem;
+  padding: 10px;
+  padding-left: 6 rem; 
+  margin-right: 7rem;
+  margin-left: 3rem;
+}
+
+.link {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  
+  
+}
+
+.link li {
+  margin-right: 1.7rem;
+   /* Adjust spacing between links */
+}
+
+nav  li {
+  display: inline-block;
+  list-style: none;
+ 
+  position: relative;
+}
+
+nav  li a {
+  text-decoration: none;
+  color: hsl(0, 20%, 97%);
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 25px;
+}
+
+nav  li a:after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: hwb(356 5% 11%);
+  transition: 0.5s;
+}
+
+nav li a:hover::after {
+  width: 100%;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap:1 rem;
+}
+button{
+  margin-right: 1rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 500;
+  color: hwb(0 11% 22%); 
+  transition: color 0.5s ease;
+  font-family:  sans-serif; 
+}
+&:focus{
+  outline: none;
+}
+
+.Search {
+  position: relative;
+}
+
+.Search button {
+  background-color: transparent;
+margin-left:4rem ;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+}
+
+input{
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 20px;
+  font-weight: 500;
+  color: white; 
+  transition: color 0.5s ease;
+  font-family:  sans-serif;
+  font-weight: 600; 
+  margin-right: 20px;
+  border: 1px solid white;
+  border-radius: 6px;
+  height: 30px;
+  padding: 4px 10px;
+}
+
+
+
