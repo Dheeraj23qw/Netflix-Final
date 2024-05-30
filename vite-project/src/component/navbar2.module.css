@@ -15,7 +15,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000; /* Ensure the navbar appears above other content */
+    z-index: 1000; 
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
    
   }
@@ -26,7 +26,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 3rem; /* Adjust size as needed */
-    color: white; /* Adjust color as needed */
+    color: white; 
     cursor: pointer;
   }
   
@@ -57,13 +57,17 @@
    
   }
   
-  .brand img {
-    width: 150px;
-    height: 4 rem;
-    padding: 10px;
-    padding-left: 6 rem; 
-    margin-right: 7rem;
-    margin-left: 3rem;
+  .brand {
+    position: relative;
+    width: 180px;
+    height: 50px; /* Adjust height as needed */
+    background-image: url('/images/background-image.jpg'); /* Adjust the path */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 50px;
   }
   
   .link {

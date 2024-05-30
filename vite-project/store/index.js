@@ -1,8 +1,4 @@
-import {
-  configureStore,
-  createAsyncThunk,
-  createSlice,
-} from "@reduxjs/toolkit";
+import { configureStore, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const API_KEY = "6dabf99436663f10ca021167ad383fdc";
@@ -33,6 +29,8 @@ const createArrayFromRawData = (array, genres) => {
     name: movie.original_name || movie.original_title,
     poster: movie.poster_path,
     backdrop: movie.backdrop_path,
+    overview: movie.overview,
+    release_date: movie.release_date,
     genres: movie.genre_ids
       .map((genreId) => {
         const genre = genres.find(({ id }) => id === genreId);
@@ -97,15 +95,11 @@ const netflixSlice = createSlice({
   initialState,
   reducers: {
     addwishlist: (state, action) => {
-      
-      const { backdrop, genres, id, name, poster } = action.payload;
-      
-      state.wishlistItems.push({ backdrop, genres, id, name, poster });
+      const { backdrop, genres, id, name, poster, overview, release_date } = action.payload;
+      state.wishlistItems.push({ backdrop, genres, id, name, poster, overview, release_date });
     },
     removelist: (state, action) => {
-    
       const { id } = action.payload;
-    
       state.wishlistItems = state.wishlistItems.filter(
         (item) => item.id !== id
       );

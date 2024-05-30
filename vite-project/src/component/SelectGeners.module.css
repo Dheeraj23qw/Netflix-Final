@@ -1,33 +1,34 @@
-/* styles.module.css */
-  .container{
-    background-color: black;
-   
-  }
+body {
+  background-color: black;
+}
 
-   .selectContainer {
-    background-color: black;
-    height:140px;
-   padding-top: 70px;
-  }
-  
-  .selectContainer select {
-    margin-top: 30px;
-    margin-left: 80px;
-    width: 200px;
-    padding: 8px;
-    
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .selectContainer select:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  }
-  
-  .selectContainer select option {
-    padding: 8px;
-  }
-  
+.container {
+  background-color: black;
+}
+
+.selectContainer {
+  background-color: black;
+  height: 140px;
+  padding-top: 70px;
+  margin-top: 50px;
+}
+
+.selectContainer select {
+  margin-top: 30px;
+  margin-left: 80px;
+  width: 200px;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.selectContainer select:focus {
+  outline: none;
+  border-color: #ff1900;
+  box-shadow: 0 0 5px #ff3300;
+}
+
+.selectContainer select option {
+  padding: 8px;
+}

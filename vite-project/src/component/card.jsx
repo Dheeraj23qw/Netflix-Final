@@ -6,32 +6,37 @@ import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { removelist, addwishlist } from "../../store";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Card({ movieData }) {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleAddToWishlist = () => {
-    dispatch(addwishlist(movieData)); // Dispatching addwishlist action with movieData
+    dispatch(addwishlist(movieData));
+    toast.success("Added to Watchlist!");
   };
 
   const handleRemoveFromWishlist = () => {
     dispatch(removelist({ id: movieData.id })); // Dispatching removelist action with movie ID
   };
 
-  const navigateToPlayer = () => {
-    navigate("/player", {
-      state: { image: `https://image.tmdb.org/t/p/w500/${movieData.poster}` },
+  const navigateToMoviePg = () => {
+    navigate("/moviepg", {
+      state: { movieData: movieData },
     });
   };
-
+  
   return (
+
+
     <div
       className={styles.container}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      <ToastContainer/>
       <img
         src={`https://image.tmdb.org/t/p/w500/${movieData.poster}`}
         className={styles.poster}
@@ -49,7 +54,7 @@ function Card({ movieData }) {
             <div>
               <IoPlayCircleSharp
                 className={styles.icon}
-                onClick={navigateToPlayer}
+                onClick={navigateToMoviePg}
               />
               <RiThumbUpFill className={styles.icon} title="Like" />
               <RiThumbDownFill

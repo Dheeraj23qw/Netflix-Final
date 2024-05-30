@@ -1,9 +1,8 @@
-
 import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Navbar2 from "../src/component/navbar2";
 import NotAvailable from "../src/component/NotAvailable";
-import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies, getGenres } from "../store";
 import Slider from "../src/component/slider";
 import SelectGeners from "../src/component/SelectGeners";
@@ -17,23 +16,21 @@ export default function Tv() {
 
   useEffect(() => {
     dispatch(getGenres());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
-    if (genresLoaded) dispatch(fetchMovies({ type: "tv" }));
-  },[genresLoaded]);
-
-  
-  return  <div>
-  <Navbar2 />
-
-  <SelectGeners genres={genres} type="tv"/>
-  <div className="data">
-    {
-         movies.length ?  <Slider movies={movies}/> : <NotAvailable/>
+    if (genresLoaded) {
+      dispatch(fetchMovies({ type: "tv" }));
     }
-  </div>
- 
-</div>;
-}
+  }, [genresLoaded, dispatch]);
 
+  return (
+    <div>
+      <Navbar2 />
+      <SelectGeners genres={genres} type="tv" />
+      <div className="data">
+        {movies && movies.length ? <Slider movies={movies} /> : <NotAvailable />}
+      </div>
+    </div>
+  );
+}

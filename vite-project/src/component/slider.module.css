@@ -1,8 +1,15 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+
+
 .container{
 background-color: black;
 position: absolute;
 font-family: sans-serif;
-overflow-x:hidden;
+
 
 h1{
     color: white;

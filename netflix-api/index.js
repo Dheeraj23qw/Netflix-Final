@@ -28,27 +28,35 @@ async function main() {
 app.post("/add", addMovies);
 
 app.post("/api/create-checkout", async (req, res) => {
-console.log(req.body)
-  const { cartItems, totalBill } = req.body;
-  const lineItems = cartItems.map((item) => ({
+  const { name,price, totalBill } = req.body;
+
+  // Convert movieData to a single line item for checkout session
+  const lineItem = {
     price_data: {
       currency: "usd",
       product_data: {
-        name: item.name
+        name: name
       },
-      unit_amount: item.price * 100
+      unit_amount: price * 100 // Convert price to cents
     },
-    quantity: item.quantity
-  }));
+    quantity: 1, // Assuming quantity is always 1 for a single movie in this example
+  };
+
+  try {
+    // Create checkout session
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      line_items: [lineItem], // Convert lineItem to an array
+      mode: "payment",
+      success_url: "http://localhost:5173/success",
+      cancel_url: "http://localhost:5173/cancel",
+    });
   
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ["card"],
-    line_items: lineItems,
-    mode: "payment",
-    success_url: "http://localhost:5173/success",
-    cancel_url: "http://localhost:5173/cancel",
-  });
-  res.json({ id: session.id });
+    res.json({ id: session.id });
+  } catch (error) {
+    console.error("Error creating checkout session:", error);
+    res.status(500).json({ error: "Failed to create checkout session" });
+  }
 });
 
 app.listen(port, () => {
