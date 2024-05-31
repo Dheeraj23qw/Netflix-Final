@@ -14,7 +14,11 @@ const app = express();
 const port = 5000;
 
 //Middlewares
-app.use(cors());
+app.use(cors({
+  origin: "https://deploy-mern-1whq.vercel.app",
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
 app.use(morgan("tiny"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
