@@ -15,7 +15,7 @@ const port = 5000;
 
 //Middlewares
 app.use(cors({
-  origin: "https://deploy-mern-1whq.vercel.app",
+  origin: [""],
   methods: ['GET', 'POST'],
   credentials: true
 }));
