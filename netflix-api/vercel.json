@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "*.js", // Entry point to your server file
-      "use": "@vercel/node" // Use the Node.js runtime
+      "src": "*.js", 
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)", // Route pattern
-      "dest": "/" // Destination (proxying to your server)
+      "src": "/api/(.*)", 
+      "dest": "/" 
     }
   ]
 }
