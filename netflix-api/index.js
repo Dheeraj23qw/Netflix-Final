@@ -2,44 +2,40 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const { addMovies } = require("./controllers/user");
+const morgan = require("morgan");
+const { connectToDB } = require("./mongoDB.js");
+const routes = require("./Routes/userRoutes.js");
 const stripe = require("stripe")(
   "sk_test_51OynzPSAgwRpikwc86IctcatnOL2gHP6IgPsjc7Ocpp2EPpjI7yYCX2RAwUQYMA2x7tnpWXEwmjl2H77NPpSvQuC00wBMKCdaL"
 );
+
+
 const app = express();
 const port = 5000;
+
+//Middlewares
 app.use(cors());
+app.use(morgan("tiny"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use(bodyParser.urlencoded({ extended: false }));
+//Routes
+app.use("/api", routes);
 
-app.use(bodyParser.json());
-
-main().catch((err) => console.log(err));
-async function main() {
-  try {
-    await mongoose.connect("mongodb://localhost:27017/NETFLIX");
-    console.log("Connected to MongoDB");
-  } catch (error) {
-    console.error("Error connecting to MongoDB:", error);
-    process.exit(1);
-  }
-}
-
-app.post("/add", addMovies);
+// Connect to MongoDB database
+connectToDB();
 
 app.post("/api/create-checkout", async (req, res) => {
-  const { name,price, totalBill } = req.body;
-
-  // Convert movieData to a single line item for checkout session
+  const { name, price, totalBill } = req.body;
   const lineItem = {
     price_data: {
       currency: "usd",
       product_data: {
-        name: name
+        name: name,
       },
-      unit_amount: price * 100 // Convert price to cents
+      unit_amount: price * 100,
     },
-    quantity: 1, // Assuming quantity is always 1 for a single movie in this example
+    quantity: 1, 
   };
 
   try {
@@ -51,7 +47,7 @@ app.post("/api/create-checkout", async (req, res) => {
       success_url: "http://localhost:5173/success",
       cancel_url: "http://localhost:5173/cancel",
     });
-  
+
     res.json({ id: session.id });
   } catch (error) {
     console.error("Error creating checkout session:", error);

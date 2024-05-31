@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { FaPowerOff, FaSearch } from "react-icons/fa";
 import styles from "./navbar.module.css";
-import {FaPlay} from "react-icons/fa";
 import MovieSearch from "./MovieSearch";
+import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 export default function Navbar2({ isScrolled }) {
   const links = [
     { name: "Home", link: "/first" },
@@ -18,7 +18,7 @@ export default function Navbar2({ isScrolled }) {
 
 
   const handleSignout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("TOKEN");
     navigate("/signup");
   };
 
@@ -40,13 +40,66 @@ export default function Navbar2({ isScrolled }) {
           </div>
           <div className={styles.right}>
           <MovieSearch/>
-            <button onClick={handleSignout}>
-              <FaPowerOff />
-            </button>
+          {localStorage.getItem("TOKEN") ? (
+              <button
+                onClick={handleSignout}
+                className={styles.logoutButton}
+              >
+                <FaPowerOff />
+              </button>
+            ) : (
+              <button
+                onClick={() => navigate("/signup")}
+                className={styles.loginButton}
+              >
+                Login
+              </button>
+            )}
           </div>
         </nav>
       </div>
-      
+      <style jsx>{`
+        .container {
+          position: relative;
+          z-index: 3000; /* Higher z-index */
+        }
+        .navbar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 20px;
+          background-color: #333;
+          position: relative;
+          z-index: 3000; /* Higher z-index */
+        }
+        .container1 {
+          display: flex;
+          align-items: center;
+        }
+        .brand img {
+          height: 50px;
+        }
+        .link {
+          display: flex;
+          list-style: none;
+          margin-left: 20px;
+        }
+        .link li {
+          margin: 0 10px;
+        }
+        .right {
+          display: flex;
+          align-items: center;
+        }
+        .background {
+          position: relative;
+          z-index: 2000; /* Lower than navbar */
+        }
+        .playButton {
+          cursor: pointer;
+          font-size: 24px;
+        }
+      `}</style>
     </>
   );
 }

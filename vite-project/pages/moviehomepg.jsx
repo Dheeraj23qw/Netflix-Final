@@ -4,8 +4,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { addwishlist } from "../store";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Moviehomepg() {
   const navigate = useNavigate();
@@ -22,11 +22,11 @@ export default function Moviehomepg() {
   const handleCart = () => {
     navigate("/cart", { state: { movieData } });
   };
-
+  
   return (
     <>
       <Navbar2 />
-    
+
       <div
         className="movie-container"
         style={{
@@ -44,11 +44,14 @@ export default function Moviehomepg() {
         <div className="content">
           <h1>{movieData.name}</h1>
           <div className="genre">
-            Genres: {movieData.genres.map((genre) => genre).join(" | ")}
+            {movieData.genres && movieData.genres.length > 0 && (
+              <>
+                Genres:
+                {movieData.genres.map((genre) => genre).join(" | ")}
+              </>
+            )}
           </div>
-          <div className="overview">
-            {movieData.overview}
-          </div>
+          <div className="overview">{movieData.overview}</div>
           <div className="buttons">
             <button className="buy-button" onClick={handleCart}>
               Watch Now
@@ -101,7 +104,7 @@ export default function Moviehomepg() {
           z-index: 1;
           width: 50%;
           height: 50%;
-          margin-top: 100px;
+          margin-top: 60px;
           margin-left: 100px;
           text-align: left;
           transform: translateZ(30px);

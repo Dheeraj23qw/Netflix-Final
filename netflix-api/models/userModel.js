@@ -1,22 +1,34 @@
 const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
 
-const UserSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true },
-  likedMovies: Array,
-  tokens: [{ type: String, required: true }],
-});
+const userModelSchema = new mongoose.Schema(
+  {
+    username: {
+      type: String,
+      required: [true, "please provide a unique username"],
+      unique: [true, "Username exist"],
+    },
+    password: {
+      type: String,
+      required: [true, "please provide a password"],
+    },
+    email: {
+      type: String,
+      required: [true, "please provide a unique email"],
+      unique: true,
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
+    pic: {
+      type: "String",
+      default:
+        "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+    },
+  },
+  { timestamps: true }
+);
 
-UserSchema.methods.generateAuthToken = async function () {
-  try {
-    const user = this;
-    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-    user.tokens = user.tokens.concat(token);
-    await user.save();
-    return token;
-  } catch (err) {
-    console.log(err);
-  }
-};
+const User = mongoose.model("User", userModelSchema);
 
-module.exports = mongoose.model("Users", UserSchema);
+module.exports = User;

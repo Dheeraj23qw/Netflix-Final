@@ -11,6 +11,8 @@ import Cart from "./component/cart";
 import Cancel from "../pages/cancel";
 import Success from "../pages/success";
 import Moviehomepg from "../pages/moviehomepg";
+
+
 function App() {
   return (
     <Router>
@@ -35,3 +37,5 @@ function App() {
 }
 
 export default App;
+
+
