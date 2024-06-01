@@ -1,24 +1,14 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "netflix-api/package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "netflix-api/build" }
-    },
-    {
-      "src": "api/**/*.js",
+   "builds": [
+    { "src": "*.js",
       "use": "@vercel/node"
     }
-  ],
+  ]
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/netflix-api/index.html"
+    { "src": "/(.*)",
+      "dest": "/" 
     }
   ]
 }
+
