@@ -25,6 +25,9 @@ app.use(express.urlencoded({ extended: true }));
 
 //Routes
 app.use("/api", routes);
+app.get('/', (req, res) => {
+  res.json({ message: 'hello' });
+});
 
 // Connect to MongoDB database
 connectToDB();
