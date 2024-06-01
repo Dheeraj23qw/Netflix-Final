@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //Routes
-app.use("/api", routes);
+app.use("/", routes);
 app.get('/', (req, res) => {
   res.json({ message: 'hello' });
 });
@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 // Connect to MongoDB database
 connectToDB();
 
-app.post("/api/create-checkout", async (req, res) => {
+app.post("/create-checkout", async (req, res) => {
   const { name, price, totalBill } = req.body;
   const lineItem = {
     price_data: {
