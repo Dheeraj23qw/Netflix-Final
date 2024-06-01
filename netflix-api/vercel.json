@@ -2,9 +2,9 @@
   "version": 2,
   "builds": [
     {
-      "src": "frontend/package.json",
+      "src": "netflix-api/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "frontend/build" }
+      "config": { "distDir": "netflix-api/build" }
     },
     {
       "src": "api/**/*.js",
@@ -18,7 +18,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/frontend/index.html"
+      "dest": "/netflix-api/index.html"
     }
   ]
 }
