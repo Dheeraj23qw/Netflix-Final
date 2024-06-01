@@ -15,7 +15,7 @@ const port = 5000;
 
 //Middlewares
 app.use(cors({
-  origin: [""],
+  origin: ["https://netflix-fronted.vercel.app/"],
   methods: ['GET', 'POST'],
   credentials: true
 }));
